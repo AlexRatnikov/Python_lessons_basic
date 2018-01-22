@@ -62,6 +62,11 @@ b = int(input())
 print("enter c of ax² + bx + c = 0")
 c = int(input())
 
+if a == 0:
+    x = - c / b
+    print("x=%s" % x)
+    exit(0)
+
 d = b**2 - 4 * a * c
 
 if d < 0:
