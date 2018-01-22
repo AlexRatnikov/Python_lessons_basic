@@ -1,10 +1,22 @@
+import math
 # Задание-1: уравнение прямой вида y = kx + b задано в виде строки.
 # Определить координату y точки с заданной координатой x.
 
 equation = 'y = -12x + 11111140.2121'
 x = 2.5
 # вычислите и выведите y
+eq = equation[4:]
+pos_x = eq.find("x")
+k = float(eq[:pos_x])
+b = eq[pos_x+2:]
+if (eq[pos_x+2] == "+"):
+    b = float(eq[pos_x+4:])
+else:
+    b = float(eq[pos_x + 4:])*(-1)
 
+y = k*x + b
+
+print("y={}".format(y))
 
 # Задание-2: Дата задана в виде строки формата 'dd.mm.yyyy'.
 # Проверить, корректно ли введена дата.
@@ -19,10 +31,47 @@ x = 2.5
 # Пример корректной даты
 date = '01.11.1985'
 
+def iscorrect(date):
+    day = date[:2]
+    # print(day)
+
+    month = date[3:5]
+    # print(month)
+
+    year = date[-4:]
+    # print(year)
+
+    thirty_one = [1, 3, 5, 7, 8, 10, 12]
+    max_day = 31
+
+    if not ((str(day).isdigit()) & str(month).isdigit() & str(year).isdigit()):
+        # print("Format is wrong!")
+        return False
+
+    if (thirty_one.count(month) == 0):
+        max_day = 30
+
+    if 1 < int(year) < 9999:
+        if 1 <= int(month) <= 12:
+            if 1 <= int(day) <= max_day:
+                return True
+            else:
+                return False
+        else:
+            return False
+    else:
+        return False
+
+
 # Примеры некорректных дат
+print(iscorrect(date))
 date = '01.22.1001'
+print(iscorrect(date))
 date = '1.12.1001'
+print(iscorrect(date))
 date = '-2.10.3001'
+print(iscorrect(date))
+
 
 
 # Задание-3: "Перевёрнутая башня" (Задача олимпиадного уровня)
@@ -54,3 +103,9 @@ date = '-2.10.3001'
 #
 # Вход: 11
 # Выход: 5 3
+# max_room = 14
+# rooms = [1]
+# tower = []
+# for i in range(1, max_room):
+#     for room in rooms:
+#         rooms.append(room * room)
