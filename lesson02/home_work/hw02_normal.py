@@ -13,7 +13,7 @@ digits = [1, 3, 5, 4, 6, 7, 9, -7, 6, 3, 0, 10, 4, 2, 9.9999, math.pi, -math.e]
 new_digits = []
 print(digits)
 for digit in digits:
-    if digit > 0:
+    if digit >= 0:
         d = math.sqrt(digit)
         if  (d == round(d)):
             new_digits.append(d)

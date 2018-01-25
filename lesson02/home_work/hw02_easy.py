@@ -14,17 +14,21 @@ import random
 
 # Подсказка: воспользоваться методом .format()
 fruits_1=["apple", "banana", "kiwi", "watermelon", "cherry", "pomegranate"]
-for i in range(len(fruits_1)):
-    print("{}. {:>10}".format(i + 1, fruits_1[i]))
+max_offset = len(max(fruits_1, key=len))
+# for i in range(len(fruits_1)):
+#     print("{0}. {1:>{2}}".format(i + 1, fruits_1[i], max_offset))
+
+for id, fruit in enumerate(fruits_1, start=1):
+    print("{0}. {1:>{2}}".format(id, fruit, max_offset))
+
 
 # Задача-2:
 # Даны два произвольные списка.
 # Удалите из первого списка элементы, присутствующие во втором списке.
 fruits_2=["pear", "banana", "grapes", "watermelon", "pineapple"]
 for i in fruits_2:
-    for j in fruits_1:
-        if i == j:
-            fruits_1.remove(j)
+    if i in fruits_1:
+        fruits_1.remove(i)
 
 print(fruits_1)
 print(fruits_2)
