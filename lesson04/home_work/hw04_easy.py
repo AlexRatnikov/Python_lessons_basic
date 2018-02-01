@@ -7,16 +7,8 @@
 # квадратами элементов исходного списка
 # [1, 2, 4, 0] --> [1, 4, 16, 0]
 import random
-list = [random.randint(-10, 10) for _ in range(10)]
-list2 = []
-
-# Почему решение с лямбдой не работает?:
-# list2 = list(map(lambda x: x ** 2 , list))
-
-print(list)
-for el in list[:]:
-    list2.append(el ** 2)
-
+list1 = [random.randint(-10, 10) for _ in range(10)]
+list2 = list(map(lambda x: x ** 2 , list1))
 print(list2)
 
 # Задание-2:
